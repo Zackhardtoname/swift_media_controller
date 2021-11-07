@@ -16,9 +16,12 @@ PyGetWindow = "==0.0.9"
 PyMsgBox = "==1.0.9"
 PyRect = "==0.1.4"
 PyScreeze = "==0.1.28"
+sounddevice = "*"
+numpy = "*"
 
 [dev-packages]
 neovim = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.9"

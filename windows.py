@@ -9,3 +9,13 @@ def is_sound_playing_windows():
     res = int(volume_norm)
     # print("res", res >= 3)
     return res >= 3
+
+
+def print_sound(indata, outdata, frames, time, status):
+    volume_norm = np.linalg.norm(indata) * 10
+    print("|" * int(volume_norm))
+
+
+if __name__ == '__main__':
+    with sd.Stream(callback=print_sound):
+        sd.sleep(100000)

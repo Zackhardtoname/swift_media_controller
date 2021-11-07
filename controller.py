@@ -18,7 +18,7 @@ keyboard = Controller()
 if system_name == "win":
     stop_key = keycode.from_vk(178)
 else:
-    stop_key = Key.pause
+    stop_key = keycode.from_vk(269025045)
 
 
 def tap(key):
