@@ -1,4 +1,4 @@
-from pynput.keyboard import Key, Listener, Controller
+from pynput.keyboard import Key, Listener, Controller, KeyCode
 from windows import is_sound_playing_windows
 from linux import is_sound_playing_linux
 import os
@@ -12,11 +12,13 @@ def get_system_name():
 
 
 system_name = get_system_name()
+keycode = KeyCode()
+keyboard = Controller()
+
 if system_name == "win":
-    stop_key = Key.media_play_pause
+    stop_key = keycode.from_vk(178)
 else:
     stop_key = Key.pause
-keyboard = Controller()
 
 
 def tap(key):
@@ -25,7 +27,7 @@ def tap(key):
 
 
 def on_press(key):
-    # print('{0} pressed'.format(key))
+    print('{0} pressed'.format(key))
     if system_name == "win":
         sound_playing = is_sound_playing_windows()
         # print(sound_playing)
