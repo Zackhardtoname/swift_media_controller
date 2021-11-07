@@ -1,7 +1,21 @@
-
 from pynput.keyboard import Key, Listener, Controller
-import subprocess
+from windows import is_sound_playing_windows
+from linux import is_sound_playing_linux
+import os
 
+
+def get_system_name():
+    if os.name == 'nt':
+        return "win"
+
+    return "linux"
+
+
+system_name = get_system_name()
+if system_name == "win":
+    stop_key = Key.media_play_pause
+else:
+    stop_key = Key.pause
 keyboard = Controller()
 
 
@@ -10,17 +24,16 @@ def tap(key):
     keyboard.release(key)
 
 
-def is_sound_playing():
-    res = subprocess.getoutput("pacmd list-sink-inputs | grep -c 'state: RUNNING'")
-    # print(res)
-    return "0" != res
-
-
 def on_press(key):
-    print('{0} pressed'.format(key))
-    # sound_playing = is_sound_playing()
-    if key != Key.pause and sound_playing:
-        keyboard.tap(Key.pause)
+    # print('{0} pressed'.format(key))
+    if system_name == "win":
+        sound_playing = is_sound_playing_windows()
+        # print(sound_playing)
+    else:
+        sound_playing = is_sound_playing_linux()
+    # print("sound_playing", sound_playing)
+    if key != stop_key and sound_playing:
+        tap(stop_key)
 
 
 def on_release(key):

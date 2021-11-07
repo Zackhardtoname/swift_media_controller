@@ -1,3 +1,3 @@
 # Notes
-Currently, it is for Linux and tested on Arch.
-It doesn't work with Chrome on Linux since Chrome seems to lazily update it audio status lmao
+it is for Windows 10 and Linux (tested on Arch).
+Currently, it doesn't well work with Chrome on Linux.
