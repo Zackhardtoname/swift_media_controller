@@ -19,7 +19,7 @@ if system_name == "win":
     stop_key = keycode.from_vk(178)
 else:
     stop_key = keycode.from_vk(269025045)
-
+stop_keys = {stop_key, Key.left, Key.right}
 
 def tap(key):
     keyboard.press(key)
@@ -34,7 +34,7 @@ def on_press(key):
     else:
         sound_playing = is_sound_playing_linux()
     # print("sound_playing", sound_playing)
-    if key != stop_key and sound_playing:
+    if key not in stop_keys and sound_playing:
         tap(stop_key)
 
 
@@ -42,7 +42,8 @@ def on_release(key):
     # print('{0} release'.format(key))
     if key == Key.esc:
         # Stop listener
-        return False
+        pass
+        # return False
 
 
 # Collect events until released
