@@ -19,7 +19,11 @@ if system_name == "win":
     stop_key = keycode.from_vk(178)
 else:
     stop_key = keycode.from_vk(269025045)
-stop_keys = {stop_key, Key.left, Key.right}
+excluded_keys = {stop_key, Key.left, Key.right, Key.space, Key.enter}
+
+# personalize
+excluded_keys.add(keycode.from_char('f'))
+
 
 def tap(key):
     keyboard.press(key)
@@ -34,7 +38,7 @@ def on_press(key):
     else:
         sound_playing = is_sound_playing_linux()
     # print("sound_playing", sound_playing)
-    if key not in stop_keys and sound_playing:
+    if key not in excluded_keys and sound_playing:
         tap(stop_key)
 
 
