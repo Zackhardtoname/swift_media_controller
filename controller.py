@@ -31,7 +31,7 @@ def tap(key):
 
 
 def on_press(key):
-    print('{0} pressed'.format(key))
+    # print('{0} pressed'.format(key))
     if system_name == "win":
         sound_playing = is_sound_playing_windows()
         # print(sound_playing)
