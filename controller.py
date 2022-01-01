@@ -19,10 +19,12 @@ if system_name == "win":
     stop_key = keycode.from_vk(178)
 else:
     stop_key = keycode.from_vk(269025045)
-excluded_keys = {stop_key, Key.left, Key.right, Key.space, Key.enter}
+excluded_keys = {stop_key, Key.left, Key.right, Key.up, Key.down,
+                 Key.page_down, Key.page_down, Key.space, Key.enter, Key.shift, Key.tab}
 
 # personalize
-excluded_keys.add(keycode.from_char('f'))
+for key in ['f', 'e', 'q']:
+    excluded_keys.add(keycode.from_char(key))
 
 
 def tap(key):
