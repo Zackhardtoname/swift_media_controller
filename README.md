@@ -1,2 +1,2 @@
 # Notes
-it is for Windows 10 and Linux (tested on Arch).
+It has been tested on Windows 10 and (Arch) Linux.
