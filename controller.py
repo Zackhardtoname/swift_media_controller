@@ -37,10 +37,10 @@ def on_press(key):
     # print('{0} pressed'.format(key))
     if system_name == "win":
         sound_playing = is_sound_playing_windows()
-        # print(sound_playing)
+        print(sound_playing)
     else:
         sound_playing = is_sound_playing_linux()
-    # print("sound_playing", sound_playinghort
+        print("sound_playing", sound_playing)
     if key not in excluded_keys and sound_playing:
         tap(stop_key)
 
