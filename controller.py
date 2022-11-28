@@ -18,12 +18,13 @@ keyboard = Controller()
 if system_name == "win":
     stop_key = keycode.from_vk(178)
 else:
-    stop_key = keycode.from_vk(269025045)
+    stop_key = Key.pause
+    # stop_key = keycode.from_vk(269025045)  # actually end video key
 excluded_keys = {stop_key, Key.left, Key.right, Key.up, Key.down,
-                 Key.page_down, Key.page_down, Key.space, Key.enter, Key.shift, Key.tab}
+                 Key.page_down, Key.page_down, Key.space, Key.enter, Key.shift, Key.tab, Key.delete, Key.backspace}
 
 # personalize
-for key in ['f', 'e', 'q']:
+for key in ['f', 'e', 'q', ',', '.']:
     excluded_keys.add(keycode.from_char(key))
 
 
@@ -39,7 +40,7 @@ def on_press(key):
         # print(sound_playing)
     else:
         sound_playing = is_sound_playing_linux()
-    # print("sound_playing", sound_playing)
+    # print("sound_playing", sound_playinghort
     if key not in excluded_keys and sound_playing:
         tap(stop_key)
 
